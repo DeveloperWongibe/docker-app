@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 flask
 flask-login
 mysql-connector-python
 werkzeug
+=======
+flask
+flask-login
+mysql-connector-python
+werkzeug
+>>>>>>> d21b1e38a6ac0d1050275ea627fcda983c1369ea
