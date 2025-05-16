@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Flask MySQL App{% endblock %}</title>
+</head>
+<body>
+  <nav>
+    {% if current_user.is_authenticated %}
+      <a href="{{ url_for('search') }}">Search</a> |
+      <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+      <a href="{{ url_for('login') }}">Login</a> |
+      <a href="{{ url_for('signup') }}">Sign Up</a>
+    {% endif %}
+  </nav>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+      MYSQL_DB: mydatabase
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
